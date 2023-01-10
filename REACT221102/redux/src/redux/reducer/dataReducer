@@ -1,0 +1,38 @@
+const initialState = {};
+
+const dataReducer = (state = initialState, action) => {
+  switch (action.type) {
+    case "SET_DATA":
+      return { ...action.data };
+    case "ADD_DATA":
+      return {
+        ...state.data,
+        ...action.data,
+      };
+    case "RESET_DATA":
+      return initialState;
+    default:
+      return state;
+  }
+};
+
+const setData = (data) => {
+  return {
+    type: "SET_DATA",
+    data,
+  };
+};
+
+const addData = (data) => {
+  return {
+    type: "ADD_DATA",
+    data,
+  };
+};
+
+const resetData = () => {
+  return { type: "RESET_DATA" };
+};
+
+export default dataReducer;
+export { setData, addData, resetData };
